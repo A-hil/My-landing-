@@ -1,16 +1,17 @@
-import './App.css'
 import Header from './components/Header'
 import Slider from './components/Slider'
-import WhyUs from './components/WhyUs'
 import Footer from './components/Footer'
-
+import WhyUs from './components/WhyUs'
+import Certificates from './components/Certificates'
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#F2F2F3]">
+    <div>
       <Header />
       <Slider />
-      <WhyUs />
+
+      <WhyUs/>
+      <Certificates />
       <Footer />
       
     </div>
