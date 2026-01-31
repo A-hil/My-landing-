@@ -37,9 +37,6 @@ const certificates = [
 export default function Certificates() {
   const [selectedCert, setSelectedCert] = useState(null)
 
-  // ⬇⬇⬇⬇⬇ ДОБАВЬТЕ ЗДЕСЬ ⬇⬇⬇⬇⬇
-  
-  // Функция для открытия оригинала
   const handleOpenOriginal = () => {
     if (!selectedCert) return
     

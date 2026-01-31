@@ -3,29 +3,56 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://a-hil.github.io/My-landing-/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.13.0",
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
-    "@types/react": "^19.2.5",
+    "@storybook/cli": "^10.2.3",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
+    "gh-pages": "^6.3.0",
     "globals": "^16.5.0",
+    "husky": "^9.1.7",
+    "jsdom": "^27.4.0",
+    "lighthouse": "^13.0.1",
+    "lint-staged": "^16.2.7",
+    "npm-audit-resolver": "^3.0.0-RC.0",
+    "prettier": "^3.8.1",
     "react-devtools": "^7.0.1",
-    "vite": "^7.2.4"
+    "source-map-explorer": "^2.5.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.2.4",
+    "vitest": "^4.0.18"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

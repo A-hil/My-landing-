@@ -9,11 +9,9 @@ function App() {
     <div>
       <Header />
       <Slider />
-      
-      <WhyUs/>
+      <WhyUs />
       <Certificates />
       <Footer />
-      
     </div>
   )
 }
