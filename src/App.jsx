@@ -9,7 +9,7 @@ function App() {
     <div>
       <Header />
       <Slider />
-
+      
       <WhyUs/>
       <Certificates />
       <Footer />

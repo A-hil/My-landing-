@@ -1,4 +1,4 @@
-export default function WhyMe() {
+export default function WhyUs() {
   return (
     <section id="why" className="min-h-screen bg-[#F2F2F3] py-16 flex items-center">
       <div className="w-full px-6">
@@ -10,14 +10,14 @@ export default function WhyMe() {
           <div className="grid md:grid-cols-2 gap-10 mb-16">
             <div className="bg-white p-10 rounded-3xl shadow-xl h-full flex flex-col">
               <h3 className="text-2xl md:text-3xl font-bold text-[#2C3E50] mb-6">Современные технологии</h3>
-              <p className="text-gray-600 text-lg flex-grow">
+              <p className="text-gray-600 text-lg flex">
                 Использую технологии, которые сегодня востребованы на рынке: Vite, Tailwind, React, Node.js.
                 Глубокое понимание фундаментальных принципов программирования.
               </p>
             </div>
             <div className="bg-white p-10 rounded-3xl shadow-xl h-full flex flex-col">
               <h3 className="text-2xl md:text-3xl font-bold text-[#2C3E50] mb-6">Практический подход</h3>
-              <p className="text-gray-600 text-lg flex-grow">
+              <p className="text-gray-600 text-lg flex">
                 Каждый изучаемый инструмент сразу применяю в реальных проектах, создавая работающие решения.
                 Накопление портфолио и практического опыта.
               </p>
