@@ -117,13 +117,14 @@ export default function Certificates() {
 <div className="mb-6 bg-white rounded-xl p-4 flex items-center justify-center h-48 border border-gray-300 overflow-hidden relative">
   {cert.image ? (
     <img 
-      src={cert.image}  
-      alt={`Сертификат: ${cert.title}`} 
-      className="absolute inset-0 w-full h-full object-contain rounded-lg" 
-      onError={(e) => {
-        e.target.style.display = 'none'; // Скрыть если ошибка загрузки
-      }}
-    />
+  src={cert.image}  
+  alt={`Сертификат: ${cert.title}`} 
+  className="absolute inset-0 w-full h-full object-contain rounded-lg"
+  onError={(e) => {
+    e.target.onerror = null; // предотвращаем зацикливание
+    e.target.src = './placeholder-cert.jpg'; // путь к заглушке
+  }}
+/>
   ) : (
     /* Заглушка если изображения нет */
     <div className="text-center relative z-10 bg-white/90 p-4 rounded-lg">
@@ -196,11 +197,14 @@ export default function Certificates() {
   {/* Изображение сертификата - СУПЕР ПРОСТО */}
   <div className="bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
     <img 
-      src={selectedCert?.image || "/placeholder-cert.jpg"} 
-      alt={selectedCert?.title || "Сертификат"}
-      className="w-full h-auto max-h-96 object-contain"
-    />
-    
+  src={selectedCert?.image || "./placeholder-cert.jpg"} 
+  alt={selectedCert?.title || "Сертификат"}
+  className="w-full h-auto max-h-96 object-contain"
+  onError={(e) => {
+    e.target.onerror = null;
+    e.target.src = "./placeholder-cert.jpg";
+  }}
+/>
   </div>
 
                     {/* Детали сертификата */}
