@@ -10,8 +10,9 @@ const certificates = [
     date: '2025',
     description: 'Курс по современной фронтенд-разработке',
     skills: ['HTML5', 'CSS3', 'JavaScript'],
-    image: '/Сертификат1.png',
-    pdf: '/certificates/stepik-certificate.pdf', 
+    // Указывайте ТОЛЬКО существующие файлы
+    image: null, // Файла Сертификат1.png нет
+    pdf: '/certificates/stepik-certificate.pdf', // Этот файл ЕСТЬ
   },
   
   {
@@ -20,7 +21,7 @@ const certificates = [
     issuer: 'Stepik / freeCodeCamp',
     date: '2023',
     description: 'Продвинутый курс по JavaScript',
-    image: '/certificates/js-cert.jpg',
+    image: null, // Файла js-cert.jpg нет
     skills: ['ES6+', 'Async/Await', 'DOM API', 'Web APIs']
   },
   {
@@ -29,7 +30,7 @@ const certificates = [
     issuer: 'Udemy / Coursera',
     date: '2024',
     description: 'Разработка приложений на React с Redux',
-    image: '/certificates/react-cert.jpg',
+    image: null, // Файла react-cert.jpg нет
     skills: ['React Hooks', 'Redux', 'React Router', 'Context API']
   }
 ]
@@ -41,13 +42,10 @@ export default function Certificates() {
     if (!selectedCert) return
     
     if (selectedCert.pdf) {
-      // Если есть PDF - открываем в новой вкладке
       window.open(selectedCert.pdf, '_blank', 'noopener,noreferrer')
     } else if (selectedCert.image) {
-      // Если есть изображение - открываем изображение
       window.open(selectedCert.image, '_blank', 'noopener,noreferrer')
     } else {
-      // Если ничего нет - просто закрываем модалку
       setSelectedCert(null)
     }
   }
@@ -55,7 +53,6 @@ export default function Certificates() {
   // Функция для скачивания PDF
   const handleDownloadPDF = () => {
     if (!selectedCert?.pdf) {
-      // Если PDF нет, но есть изображение - предлагаем скачать изображение
       if (selectedCert?.image) {
         const link = document.createElement('a')
         link.href = selectedCert.image
@@ -115,6 +112,16 @@ export default function Certificates() {
 
        {/* Изображение сертификата */}
 <div className="mb-6 bg-white rounded-xl p-4 flex items-center justify-center h-48 border border-gray-300 overflow-hidden relative">
+   <div className="text-center relative z-10 bg-white/90 p-4 rounded-lg">
+    <div className="w-16 h-16 bg-[#2C3E50] text-white rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <p className="text-gray-500">Сертификат</p>
+    <p className="text-sm text-gray-400 mt-1">Нажмите для просмотра PDF</p>
+  </div>
+  
   {cert.image ? (
     <img 
   src={cert.image}  
@@ -125,6 +132,7 @@ export default function Certificates() {
     e.target.src = './placeholder-cert.jpg'; // путь к заглушке
   }}
 />
+
   ) : (
     /* Заглушка если изображения нет */
     <div className="text-center relative z-10 bg-white/90 p-4 rounded-lg">
@@ -196,6 +204,19 @@ export default function Certificates() {
                   <div className="grid md:grid-cols-2 gap-8">
   {/* Изображение сертификата - СУПЕР ПРОСТО */}
   <div className="bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
+    
+   < div className="text-center p-6">
+    <div className="w-20 h-20 bg-[#2C3E50] text-white rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <p className="text-gray-600 font-medium">{selectedCert.title}</p>
+    <p className="text-sm text-gray-400 mt-2">Изображение сертификата</p>
+    {selectedCert.pdf && (
+      <p className="text-sm text-blue-500 mt-2">PDF доступен для скачивания</p>
+    )}
+  </div>
     <img 
   src={selectedCert?.image || "./placeholder-cert.jpg"} 
   alt={selectedCert?.title || "Сертификат"}
