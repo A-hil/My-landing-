@@ -3,10 +3,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  plugins: [
-    react(),  // react ПЕРВЫМ
-    tailwindcss(),
-  ],
+  plugins: [react(), tailwindcss()],
   base: '/My-landing-/',
   build: {
     outDir: 'dist',
