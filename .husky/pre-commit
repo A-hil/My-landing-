@@ -1,4 +1,1 @@
-
-if [ -f .husky/_/husky.sh ]; then
-  . .husky/_/husky.sh
-fi
+npm test

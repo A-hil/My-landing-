@@ -1,25 +1,28 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --light: #F2F2F3;
+  --light: #f2f2f3;
   --dark: #392325;
-  --primary: #2C3E50;
+  --primary: #2c3e50;
   font-family: 'Inter', sans-serif;
-   padding: 0 !important;
+  padding: 0 !important;
   margin: 0 !important;
   width: 100%;
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: #F2F2F3;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  background-color: #f2f2f3;
   margin: 0;
- 
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 .slide-up {
   opacity: 0;

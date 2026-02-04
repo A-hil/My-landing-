@@ -1,8 +1,8 @@
-import Header from './components/Header'
-import Slider from './components/Slider'
-import Footer from './components/Footer'
-import WhyUs from './components/WhyUs'
-import Certificates from './components/Certificates'
+import Header from './components/Header';
+import Slider from './components/Slider';
+import Footer from './components/Footer';
+import WhyUs from './components/WhyUs';
+import Certificates from './components/Certificates';
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Certificates />
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
