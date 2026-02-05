@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 // src/components/Certificates.jsx
 import { useState } from 'react';
+=======
+import { useState } from 'react'
+
+>>>>>>> 5bd3622 (Откат изменений)
 
 const certificates = [
   {
@@ -9,9 +14,8 @@ const certificates = [
     date: '2025',
     description: 'Курс по современной фронтенд-разработке',
     skills: ['HTML5', 'CSS3', 'JavaScript'],
-    // Указывайте ТОЛЬКО существующие файлы
-    image: null, // Файла Сертификат1.png нет
-    pdf: '/certificates/stepik-certificate.pdf', // Этот файл ЕСТЬ
+    image: null,
+    pdf: '/certificates/stepik-certificate.pdf', 
   },
 
   {
@@ -20,8 +24,13 @@ const certificates = [
     issuer: 'Stepik / freeCodeCamp',
     date: '2023',
     description: 'Продвинутый курс по JavaScript',
+<<<<<<< HEAD
     image: null, // Файла js-cert.jpg нет
     skills: ['ES6+', 'Async/Await', 'DOM API', 'Web APIs'],
+=======
+    image: null,
+    skills: ['ES6+', 'Async/Await', 'DOM API', 'Web APIs']
+>>>>>>> 5bd3622 (Откат изменений)
   },
   {
     id: 3,
@@ -29,10 +38,17 @@ const certificates = [
     issuer: 'Udemy / Coursera',
     date: '2024',
     description: 'Разработка приложений на React с Redux',
+<<<<<<< HEAD
     image: null, // Файла react-cert.jpg нет
     skills: ['React Hooks', 'Redux', 'React Router', 'Context API'],
   },
 ];
+=======
+    image: null,
+    skills: ['React Hooks', 'Redux', 'React Router', 'Context API']
+  }
+]
+>>>>>>> 5bd3622 (Откат изменений)
 
 export default function Certificates() {
   const [selectedCert, setSelectedCert] = useState(null);
@@ -76,7 +92,11 @@ export default function Certificates() {
     <section id="certificates" className="py-16 bg-white">
       <div className="w-full px-6">
         <div className="max-w-7xl mx-auto">
+<<<<<<< HEAD
           {/* Заголовок секции */}
+=======
+          
+>>>>>>> 5bd3622 (Откат изменений)
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-[#392325] mb-4">
               Сертификаты
@@ -86,7 +106,6 @@ export default function Certificates() {
             </p>
           </div>
 
-          {/* Сетка сертификатов */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {certificates.map(cert => (
               <div
@@ -94,7 +113,11 @@ export default function Certificates() {
                 className="bg-[#F2F2F3] rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 cursor-pointer"
                 onClick={() => setSelectedCert(cert)}
               >
+<<<<<<< HEAD
                 {/* Заголовок сертификата */}
+=======
+
+>>>>>>> 5bd3622 (Откат изменений)
                 <div className="mb-4">
                   <h3 className="text-xl font-bold text-[#2C3E50] mb-2">
                     {cert.title}
@@ -107,6 +130,7 @@ export default function Certificates() {
                   </div>
                 </div>
 
+<<<<<<< HEAD
                 {/* Изображение сертификата */}
                 <div className="mb-6 bg-white rounded-xl p-4 flex items-center justify-center h-48 border border-gray-300 overflow-hidden relative">
                   <div className="text-center relative z-10 bg-white/90 p-4 rounded-lg">
@@ -169,8 +193,26 @@ export default function Certificates() {
 
                 {/* Описание */}
                 <p className="text-gray-600 mb-6">{cert.description}</p>
+=======
+<div className="mb-6 bg-white rounded-xl p-4 flex items-center justify-center h-48 border border-gray-300 overflow-hidden relative">
+   <div className="text-center relative z-10 bg-white/90 p-4 rounded-lg">
+    <div className="w-16 h-16 bg-[#2C3E50] text-white rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <p className="text-gray-500">Сертификат</p>
+    <p className="text-sm text-gray-400 mt-1">Нажмите для просмотра PDF</p>
+  </div>
+  
 
-                {/* Навыки */}
+</div>
+
+                <p className="text-gray-600 mb-6">
+                  {cert.description}
+                </p>
+>>>>>>> 5bd3622 (Откат изменений)
+
                 <div className="flex flex-wrap gap-2">
                   {cert.skills.map((skill, index) => (
                     <span
@@ -185,14 +227,12 @@ export default function Certificates() {
             ))}
           </div>
 
-          {/* Кнопка "Загрузить все" */}
           <div className="text-center mt-12">
             <button className="px-8 py-3 bg-[#2C3E50] text-white font-medium rounded-lg hover:bg-[#1a2530] transition-colors duration-300">
               Загрузить все сертификаты
             </button>
           </div>
 
-          {/* Модальное окно для просмотра сертификата */}
           {selectedCert && (
             <div
               className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
@@ -203,7 +243,7 @@ export default function Certificates() {
                 onClick={e => e.stopPropagation()}
               >
                 <div className="p-6">
-                  {/* Заголовок модалки */}
+
                   <div className="flex justify-between items-center mb-6">
                     <h3 className="text-2xl font-bold text-[#2C3E50]">
                       {selectedCert.title}
@@ -228,8 +268,8 @@ export default function Certificates() {
                     </button>
                   </div>
 
-                  {/* Контент модалки */}
                   <div className="grid md:grid-cols-2 gap-8">
+<<<<<<< HEAD
                     {/* Изображение сертификата - СУПЕР ПРОСТО */}
                     <div className="bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
                       <div className="text-center p-6">
@@ -270,6 +310,32 @@ export default function Certificates() {
                         }}
                       />
                     </div>
+=======
+  <div className="bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
+    
+   < div className="text-center p-6">
+    <div className="w-20 h-20 bg-[#2C3E50] text-white rounded-full flex items-center justify-center mx-auto mb-4">
+      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </div>
+    <p className="text-gray-600 font-medium">{selectedCert.title}</p>
+    <p className="text-sm text-gray-400 mt-2">Изображение сертификата</p>
+    {selectedCert.pdf && (
+      <p className="text-sm text-blue-500 mt-2">PDF доступен для скачивания</p>
+    )}
+  </div>
+    <img 
+  src={selectedCert?.image || "./placeholder-cert.jpg"} 
+  alt={selectedCert?.title || "Сертификат"}
+  className="w-full h-auto max-h-96 object-contain"
+  onError={(e) => {
+    e.target.onerror = null;
+    e.target.src = "./placeholder-cert.jpg";
+  }}
+/>
+  </div>
+>>>>>>> 5bd3622 (Откат изменений)
 
                     {/* Детали сертификата */}
                     <div>
@@ -314,6 +380,7 @@ export default function Certificates() {
                         </div>
                       </div>
 
+<<<<<<< HEAD
                       {/* Кнопки действий */}
                       <div className="mt-8 flex flex-col sm:flex-row gap-3">
                         {/* Кнопка "Открыть оригинал" */}
@@ -383,6 +450,45 @@ export default function Certificates() {
                           </button>
                         )}
                       </div>
+=======
+                     {/* Кнопки действий */}
+<div className="mt-8 flex flex-col sm:flex-row gap-3">
+  {/* Кнопка "Открыть оригинал" */}
+  <button 
+    onClick={handleOpenOriginal}
+    className="px-6 py-3 bg-[#2C3E50] text-white rounded-lg hover:bg-[#1a2530] transition-colors flex-1 flex items-center justify-center gap-2"
+  >
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+    </svg>
+    Открыть оригинал
+  </button>
+  
+  {selectedCert.pdf && (
+    <button 
+      onClick={handleDownloadPDF}
+      className="px-6 py-3 border border-[#2C3E50] text-[#2C3E50] rounded-lg hover:bg-[#F2F2F3] transition-colors flex-1 flex items-center justify-center gap-2"
+    >
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+      Скачать PDF
+    </button>
+  )}
+  
+  {!selectedCert.pdf && selectedCert.image && (
+    <button 
+      onClick={handleDownloadPDF}
+      className="px-6 py-3 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition-colors flex-1 flex items-center justify-center gap-2"
+    >
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+      </svg>
+      Скачать изображение
+    </button>
+  )}
+</div>
+>>>>>>> 5bd3622 (Откат изменений)
                     </div>
                   </div>
                 </div>
