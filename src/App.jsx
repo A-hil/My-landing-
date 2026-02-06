@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Header from './components/Header';
 import Slider from './components/Slider';
 import Footer from './components/Footer';
@@ -12,6 +13,7 @@ function App() {
       <WhyUs />
       <Certificates />
       <Footer />
+      <SpeedInsights />
     </div>
   );
 }
