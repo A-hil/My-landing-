@@ -1,6 +1,4 @@
 ﻿import { useState } from 'react';
-=======
-import { useState } from 'react'
 
 const certificates = [
   {
@@ -21,8 +19,6 @@ const certificates = [
     description: 'Продвинутый курс по JavaScript',
     image: null,
     skills: ['ES6+', 'Async/Await', 'DOM API', 'Web APIs'],
-    image: null,
-    skills: ['ES6+', 'Async/Await', 'DOM API', 'Web APIs']
   },
   {
     id: 3,
@@ -34,19 +30,44 @@ const certificates = [
     skills: ['React Hooks', 'Redux', 'React Router', 'Context API'],
   },
 ];
-    image: null,
-    skills: ['React Hooks', 'Redux', 'React Router', 'Context API']
-  }
-]
 
 export default function Certificates() {
   const [selectedCert, setSelectedCert] = useState(null);
+
+  const handleOpenOriginal = () => {
+    if (!selectedCert) return;
+
+    if (selectedCert.pdf) {
+      window.open(selectedCert.pdf, '_blank', 'noopener,noreferrer');
+    } else if (selectedCert.image) {
+      window.open(selectedCert.image, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const handleDownloadPDF = () => {
+    if (!selectedCert) return;
+
+    if (selectedCert.pdf) {
+      const link = document.createElement('a');
+      link.href = selectedCert.pdf;
+      link.download = `${selectedCert.title.replace(/\s+/g, '_')}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else if (selectedCert.image) {
+      const link = document.createElement('a');
+      link.href = selectedCert.image;
+      link.download = `${selectedCert.title.replace(/\s+/g, '_')}.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
 
   return (
     <section id="certificates" className="py-16 bg-white">
       <div className="w-full px-6">
         <div className="max-w-7xl mx-auto">
-          {/* Заголовок секции */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-[#392325] mb-4">
               Сертификаты
@@ -56,7 +77,6 @@ export default function Certificates() {
             </p>
           </div>
 
-          {/* Сетка сертификатов */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {certificates.map(cert => (
               <div
@@ -64,7 +84,6 @@ export default function Certificates() {
                 className="bg-[#F2F2F3] rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 cursor-pointer"
                 onClick={() => setSelectedCert(cert)}
               >
-                {/* Заголовок сертификата */}
                 <div className="mb-4">
                   <h3 className="text-xl font-bold text-[#2C3E50] mb-2">
                     {cert.title}
@@ -77,9 +96,8 @@ export default function Certificates() {
                   </div>
                 </div>
 
-                {/* Изображение сертификата */}
-                <div className="mb-6 bg-white rounded-xl p-4 flex items-center justify-center h-48 border border-gray-300 overflow-hidden relative">
-                  <div className="text-center relative z-10 bg-white/90 p-4 rounded-lg">
+                <div className="mb-6 bg-white rounded-xl p-4 flex items-center justify-center h-48 border border-gray-300">
+                  <div className="text-center">
                     <div className="w-16 h-16 bg-[#2C3E50] text-white rounded-full flex items-center justify-center mx-auto mb-4">
                       <svg
                         className="w-8 h-8"
@@ -97,50 +115,13 @@ export default function Certificates() {
                     </div>
                     <p className="text-gray-500">Сертификат</p>
                     <p className="text-sm text-gray-400 mt-1">
-                      Нажмите для просмотра PDF
+                      Нажмите для просмотра
                     </p>
                   </div>
-
-                  {cert.image ? (
-                    <img
-                      src={cert.image}
-                      alt={`Сертификат: ${cert.title}`}
-                      className="absolute inset-0 w-full h-full object-contain rounded-lg"
-                      onError={e => {
-                        e.target.onerror = null; // предотвращаем зацикливание
-                        e.target.src = './placeholder-cert.jpg'; // путь к заглушке
-                      }}
-                    />
-                  ) : (
-                    /* Заглушка если изображения нет */
-                    <div className="text-center relative z-10 bg-white/90 p-4 rounded-lg">
-                      <div className="w-16 h-16 bg-[#2C3E50] text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg
-                          className="w-8 h-8"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                          />
-                        </svg>
-                      </div>
-                      <p className="text-gray-500">Сертификат</p>
-                      <p className="text-sm text-gray-400 mt-1">
-                        Нажмите для просмотра
-                      </p>
-                    </div>
-                  )}
                 </div>
 
-                {/* Описание */}
                 <p className="text-gray-600 mb-6">{cert.description}</p>
 
-                {/* Навыки */}
                 <div className="flex flex-wrap gap-2">
                   {cert.skills.map((skill, index) => (
                     <span
@@ -155,14 +136,12 @@ export default function Certificates() {
             ))}
           </div>
 
-          {/* Кнопка "Загрузить все" */}
           <div className="text-center mt-12">
             <button className="px-8 py-3 bg-[#2C3E50] text-white font-medium rounded-lg hover:bg-[#1a2530] transition-colors duration-300">
               Загрузить все сертификаты
             </button>
           </div>
 
-          {/* Модальное окно для просмотра сертификата */}
           {selectedCert && (
             <div
               className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4"
@@ -173,7 +152,6 @@ export default function Certificates() {
                 onClick={e => e.stopPropagation()}
               >
                 <div className="p-6">
-                  {/* Заголовок модалки */}
                   <div className="flex justify-between items-center mb-6">
                     <h3 className="text-2xl font-bold text-[#2C3E50]">
                       {selectedCert.title}
@@ -198,10 +176,8 @@ export default function Certificates() {
                     </button>
                   </div>
 
-                  {/* Контент модалки */}
                   <div className="grid md:grid-cols-2 gap-8">
-                    {/* Изображение сертификата - СУПЕР ПРОСТО */}
-                    <div className="bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center">
+                    <div className="bg-gray-100 rounded-xl overflow-hidden flex items-center justify-center min-h-75">
                       <div className="text-center p-6">
                         <div className="w-20 h-20 bg-[#2C3E50] text-white rounded-full flex items-center justify-center mx-auto mb-4">
                           <svg
@@ -222,7 +198,7 @@ export default function Certificates() {
                           {selectedCert.title}
                         </p>
                         <p className="text-sm text-gray-400 mt-2">
-                          Изображение сертификата
+                          {selectedCert.pdf ? 'PDF сертификат' : 'Сертификат'}
                         </p>
                         {selectedCert.pdf && (
                           <p className="text-sm text-blue-500 mt-2">
@@ -230,18 +206,8 @@ export default function Certificates() {
                           </p>
                         )}
                       </div>
-                      <img
-                        src={selectedCert?.image || './placeholder-cert.jpg'}
-                        alt={selectedCert?.title || 'Сертификат'}
-                        className="w-full h-auto max-h-96 object-contain"
-                        onError={e => {
-                          e.target.onerror = null;
-                          e.target.src = './placeholder-cert.jpg';
-                        }}
-                      />
                     </div>
 
-                    {/* Детали сертификата */}
                     <div>
                       <div className="space-y-4">
                         <div>
@@ -284,12 +250,11 @@ export default function Certificates() {
                         </div>
                       </div>
 
-                      {/* Кнопки действий */}
                       <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                        {/* Кнопка "Открыть оригинал" */}
                         <button
                           onClick={handleOpenOriginal}
-                          className="px-6 py-3 bg-[#2C3E50] text-white rounded-lg hover:bg-[#1a2530] transition-colors flex-1 flex items-center justify-center gap-2"
+                          className="px-6 py-3 bg-[#2C3E50] text-white rounded-lg hover:bg-[#1a2530] transition-colors flex-1 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                          disabled={!selectedCert.pdf && !selectedCert.image}
                         >
                           <svg
                             className="w-5 h-5"
@@ -307,8 +272,7 @@ export default function Certificates() {
                           Открыть оригинал
                         </button>
 
-                        {/* Кнопка "Скачать PDF" - показывается только если есть PDF */}
-                        {selectedCert.pdf && (
+                        {(selectedCert.pdf || selectedCert.image) && (
                           <button
                             onClick={handleDownloadPDF}
                             className="px-6 py-3 border border-[#2C3E50] text-[#2C3E50] rounded-lg hover:bg-[#F2F2F3] transition-colors flex-1 flex items-center justify-center gap-2"
@@ -326,30 +290,7 @@ export default function Certificates() {
                                 d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                               />
                             </svg>
-                            Скачать PDF
-                          </button>
-                        )}
-
-                        {/* Кнопка "Скачать изображение" - если нет PDF, но есть изображение */}
-                        {!selectedCert.pdf && selectedCert.image && (
-                          <button
-                            onClick={handleDownloadPDF}
-                            className="px-6 py-3 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition-colors flex-1 flex items-center justify-center gap-2"
-                          >
-                            <svg
-                              className="w-5 h-5"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                              />
-                            </svg>
-                            Скачать изображение
+                            Скачать
                           </button>
                         )}
                       </div>
